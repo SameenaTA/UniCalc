@@ -2,6 +2,7 @@ import { initGeneralCalculator } from './calculators/general.js';
 import { initScientificCalculator } from './calculators/scientific.js';
 import { initFinancialCalculator } from './calculators/financial.js';
 import { initUnitConversion } from './calculators/unit-conversion.js';
+import { initCurrencyCalculator } from './calculators/currency.js';
 
 // DOM Elements
 const navLinks = document.querySelectorAll('.nav-links li');
@@ -79,6 +80,13 @@ function switchMode(newMode, activeLinkElement) {
                     calculatorInstances['unit'] = initUnitConversion(keypadContainer, mainDisplay, historyDisplay);
                 } else {
                     calculatorInstances['unit'].mount(keypadContainer, mainDisplay, historyDisplay);
+                }
+                break;
+            case 'currency':
+                if (!calculatorInstances['currency']) {
+                    calculatorInstances['currency'] = initCurrencyCalculator(keypadContainer, mainDisplay, historyDisplay);
+                } else {
+                    calculatorInstances['currency'].mount(keypadContainer, mainDisplay, historyDisplay);
                 }
                 break;
         }

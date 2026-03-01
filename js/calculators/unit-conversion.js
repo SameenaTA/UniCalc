@@ -47,7 +47,6 @@ export const initUnitConversion = (container, mainDisplay, historyDisplay) => {
                     <option value="weight">Weight</option>
                     <option value="temp">Temperature</option>
                     <option value="data">Data Size</option>
-                    <option value="currency">💱 Currency</option>
                 </select>
             </div>
 
