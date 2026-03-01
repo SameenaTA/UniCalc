@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Calculator</title>
+    <meta name="description"
+        content="A comprehensive web-based calculator featuring General, Scientific, Financial, and Unit Conversion modes.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-calculator"></i>
+                <span>UniCalc</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-mode="general">
+                    <i class="fa-solid fa-equals"></i>
+                    <span>General</span>
+                </li>
+                <li data-mode="scientific">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Scientific</span>
+                </li>
+                <li data-mode="financial">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Financial</span>
+                </li>
+                <li data-mode="unit">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <span>Conversion</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Calculator Area -->
+        <main class="calculator-area">
+            <div class="calculator-glass">
+
+                <!-- Display Section -->
+                <div class="display-container">
+                    <div class="history-display" id="history-display"></div>
+                    <div class="main-display" id="main-display">0</div>
+                </div>
+
+                <!-- Dynamic Keypad Section -->
+                <div class="keypad-container" id="keypad-container">
+                    <!-- Keypads injected by JS -->
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

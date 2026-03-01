@@ -1,0 +1,396 @@
+:root {
+    /* Color Palette - Vibrant Dark Mode */
+    --bg-color: #0b0f19;
+    --sidebar-bg: rgba(15, 23, 42, 0.6);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+
+    /* Accents */
+    --accent-primary: #3b82f6;
+    /* Blue */
+    --accent-secondary: #8b5cf6;
+    /* Purple */
+    --accent-success: #10b981;
+    /* Emerald */
+    --accent-danger: #ef4444;
+    /* Red */
+    --accent-warning: #f59e0b;
+    /* Amber */
+
+    /* Typography */
+    --font-ui: 'Roboto', sans-serif;
+    --font-display: 'Quicksand', sans-serif;
+
+    /* Shadows & Effects */
+    --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glow-primary: 0 0 15px rgba(59, 130, 246, 0.4);
+
+    /* Layout */
+    --sidebar-width: 250px;
+    --sidebar-collapsed-width: 70px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-ui);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    overflow: hidden;
+    /* Prevent scrolling on main body */
+}
+
+/* App Layout */
+.app-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-right: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.logo {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+.logo i {
+    color: var(--accent-primary);
+    text-shadow: var(--glow-primary);
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
+}
+
+.nav-links li {
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-links li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+}
+
+.nav-links li.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+    color: var(--text-main);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-links li i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.nav-links li.active i {
+    color: var(--accent-secondary);
+}
+
+/* Main Area */
+.calculator-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    height: 100%;
+}
+
+/* Glassmorphism Container */
+.calculator-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow-glass);
+    width: 100%;
+    max-width: 400px;
+    /* Default for General/Scientific */
+    height: 100%;
+    max-height: 700px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: max-width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Display */
+.display-container {
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    min-height: 160px;
+}
+
+.history-display {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    min-height: 1.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.main-display {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--text-main);
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    word-break: break-all;
+    text-align: right;
+    line-height: 1.1;
+}
+
+/* Keypad Layout */
+.keypad-container {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.grid-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 12px;
+    height: 100%;
+}
+
+/* Buttons */
+.btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    font-size: 1.5rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    min-height: 50px;
+}
+
+/* Button Animations */
+.btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(1px) scale(0.96);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Button Variants */
+.btn.operator {
+    color: var(--accent-primary);
+    background: rgba(59, 130, 246, 0.05);
+    font-weight: 500;
+}
+
+.btn.operator:hover {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.btn.equals {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    border: none;
+    font-weight: 700;
+    box-shadow: var(--glow-primary);
+}
+
+.btn.equals:hover {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
+}
+
+.btn.action {
+    color: var(--accent-danger);
+    background: rgba(239, 68, 68, 0.05);
+}
+
+.btn.action:hover {
+    background: rgba(239, 68, 68, 0.15);
+}
+
+.btn.span-2 {
+    grid-column: span 2;
+    aspect-ratio: auto;
+}
+
+/* Animations injected by JS */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-anim 600ms linear;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes ripple-anim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Scrollbar styling for forms/history */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--glass-border);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--glass-border);
+        flex-direction: row;
+        align-items: center;
+        padding: 0 0.5rem;
+    }
+
+    .logo {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .logo span {
+        display: none;
+        /* Hide text on mobile header */
+    }
+
+    .nav-links {
+        margin-top: 0;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-evenly;
+        padding: 0.25rem;
+        gap: 0;
+    }
+
+    .nav-links li {
+        padding: 0.6rem;
+        border-radius: 50%;
+    }
+
+    .nav-links li span {
+        display: none;
+    }
+
+    .calculator-area {
+        padding: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .calculator-glass {
+        border-radius: 16px;
+        max-width: 100%;
+        height: auto;
+        max-height: 100%;
+        padding-bottom: 10px;
+    }
+
+    .display-container {
+        padding: 1rem;
+        min-height: 120px;
+    }
+
+    .main-display {
+        font-size: 2.5rem;
+    }
+
+    .keypad-container {
+        padding: 0.8rem;
+        gap: 0.5rem;
+    }
+
+    .grid-keypad {
+        gap: 8px;
+    }
+
+    .btn {
+        min-height: 45px;
+        font-size: 1.2rem;
+    }
+}
