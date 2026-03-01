@@ -38,35 +38,46 @@ export const initUnitConversion = (container, mainDisplay, historyDisplay) => {
             </div>
 
             <style>
-                .conv-header { margin-bottom: 20px; text-align: center; }
+                .conv-header { margin-bottom: 12px; text-align: center; }
                 .conv-select-main {
                     padding: 10px; width: 100%; border-radius: 8px;
                     background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);
                     color: white; font-size: 1.1rem; outline: none; cursor: pointer;
                 }
                 .conv-select-main option { background: var(--bg-color); }
-                
+
                 .conv-body { display: flex; flex-direction: column; gap: 10px; }
-                .conv-group { display: flex; gap: 10px; }
-                
+                .conv-group { display: flex; flex-direction: column; gap: 8px; }
+
                 .conv-input {
-                    flex: 2; padding: 15px; border-radius: 12px;
+                    width: 100%; padding: 12px; border-radius: 12px;
                     background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border);
-                    color: var(--text-main); font-size: 1.5rem; outline: none; text-align: right;
+                    color: var(--text-main); font-size: 1.4rem; outline: none; text-align: right;
+                    box-sizing: border-box;
                 }
                 .conv-input:focus:not([readonly]) {
                     border-color: var(--accent-primary); box-shadow: var(--glow-primary);
                 }
                 .conv-input[readonly] { color: var(--accent-success); font-weight: bold; }
-                
+
                 .conv-select {
-                    flex: 1; padding: 10px; border-radius: 12px;
+                    width: 100%; padding: 10px; border-radius: 12px;
                     background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
-                    color: white; outline: none; cursor: pointer;
+                    color: white; outline: none; cursor: pointer; box-sizing: border-box;
                 }
                 .conv-select option { background: var(--bg-color); }
-                
-                .conv-icon { text-align: center; color: var(--text-muted); font-size: 1.5rem; margin: 10px 0;}
+
+                .conv-icon { text-align: center; color: var(--text-muted); font-size: 1.3rem; margin: 4px 0; }
+
+                /* Mobile tweaks */
+                @media (max-width: 768px) {
+                    .conv-input { font-size: 1.1rem; padding: 10px; }
+                    .conv-select-main { font-size: 0.95rem; padding: 8px; }
+                    .conv-select { padding: 8px; font-size: 0.9rem; }
+                    .conv-icon { margin: 2px 0; font-size: 1rem; }
+                    .conv-header { margin-bottom: 8px; }
+                    .conv-body { gap: 6px; }
+                }
             </style>
         `;
 
